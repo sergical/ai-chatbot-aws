@@ -39,17 +39,15 @@ This template ships with OpenAI `gpt-4o` as the default using AWS Bedrock. Howev
 
 ## Deploy Your Own
 
-_TODO_
+We're deploying to AWS using [SST](https://sst.dev/), read more about how to set up your environment variables [here](https://sst.dev/docs/environment-variables).
 
 ## Running locally
 
-You will need to use the environment variables [defined in `.env.example`](.env.example) to run Next.js AI Chatbot. Since we're deploying to AWS using [SST](https://sst.dev/), read more about how to set up your environment variables [here](https://sst.dev/docs/environment-variables).
-
-> Note: You should not commit your `.env` file or it will expose secrets that will allow others to control access to your various AWS Bedrock and authentication provider accounts.
+- Setup your environment variables (see sst.config.ts)
 
 ```bash
 pnpm install
-pnpm dev
+sst dev
 ```
 
 Your app template should now be running on [localhost:3000](http://localhost:3000/).
