@@ -1,16 +1,15 @@
-import { config } from 'dotenv';
-import { defineConfig } from 'drizzle-kit';
-
-config({
-  path: '.env.local',
-});
+import { Resource } from "sst";
+import { defineConfig } from "drizzle-kit";
 
 export default defineConfig({
-  schema: './lib/db/schema.ts',
-  out: './lib/db/migrations',
-  dialect: 'postgresql',
+  schema: "./lib/db/schema.ts",
+  out: "./lib/db/migrations",
+  dialect: "postgresql",
   dbCredentials: {
-    // biome-ignore lint: Forbidden non-null assertion.
-    url: process.env.POSTGRES_URL!,
+    host: Resource.AIChatbotAWSDB.host,
+    port: Resource.AIChatbotAWSDB.port,
+    user: Resource.AIChatbotAWSDB.username,
+    password: Resource.AIChatbotAWSDB.password,
+    database: Resource.AIChatbotAWSDB.database,
   },
 });

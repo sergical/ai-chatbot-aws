@@ -1,10 +1,10 @@
-<a href="https://chat.vercel.ai/">
-  <img alt="Next.js 14 and App Router-ready AI chatbot." src="app/(chat)/opengraph-image.png">
-  <h1 align="center">Next.js AI Chatbot</h1>
+<a href="https://aws-chat-app.serg.tech/">
+  <img alt="Next.js 14 and App Router-ready AI chatbot." src="app/opengraph-image.png">
+  <h1 align="center">Next.js AI Chatbot on AWS</h1>
 </a>
 
 <p align="center">
-  An Open-Source AI Chatbot Template Built With Next.js and the AI SDK by Vercel.
+  An Open-Source AI Chatbot Template Built With Next.js and the AI SDK by Vercel. Deployed on AWS using SST. LLM provider: AWS Bedrock.
 </p>
 
 <p align="center">
@@ -20,42 +20,46 @@
 - [Next.js](https://nextjs.org) App Router
   - Advanced routing for seamless navigation and performance
   - React Server Components (RSCs) and Server Actions for server-side rendering and increased performance
+- [SST](https://sst.dev/)
+  - SST is a framework for building serverless applications. It provides a set of tools and libraries for building, deploying, and managing serverless applications.
+  - SST is used to deploy the application to AWS.
 - [AI SDK](https://sdk.vercel.ai/docs)
   - Unified API for generating text, structured objects, and tool calls with LLMs
   - Hooks for building dynamic chat and generative user interfaces
-  - Supports OpenAI (default), Anthropic, Cohere, and other model providers
+  - Supports AWS Bedrock
 - [shadcn/ui](https://ui.shadcn.com)
   - Styling with [Tailwind CSS](https://tailwindcss.com)
   - Component primitives from [Radix UI](https://radix-ui.com) for accessibility and flexibility
 - Data Persistence
-  - [Vercel Postgres powered by Neon](https://vercel.com/storage/postgres) for saving chat history and user data
-  - [Vercel Blob](https://vercel.com/storage/blob) for efficient file storage
+  - [AMAZON RDS](https://aws.amazon.com/rds/) for saving chat history and user data
+  - [AMAZON S3](https://aws.amazon.com/s3/) for efficient file storage
 - [NextAuth.js](https://github.com/nextauthjs/next-auth)
   - Simple and secure authentication
 
 ## Model Providers
 
-This template ships with OpenAI `gpt-4o` as the default. However, with the [AI SDK](https://sdk.vercel.ai/docs), you can switch LLM providers to [OpenAI](https://openai.com), [Anthropic](https://anthropic.com), [Cohere](https://cohere.com/), and [many more](https://sdk.vercel.ai/providers/ai-sdk-providers) with just a few lines of code.
+This template ships with Nova Pro `amazon.nova-pro-v1:0` as the default using AWS Bedrock. However, with the [AI SDK](https://sdk.vercel.ai/docs), you can switch LLM providers to [OpenAI](https://openai.com), [Anthropic](https://anthropic.com), [Cohere](https://cohere.com/), and [many more](https://sdk.vercel.ai/providers/ai-sdk-providers) with just a few lines of code.
+
+For AWS Bedrock, you need to create an IAM role with the following user policies: `AmazonBedrockFullAccess`;
+
+Then in the dashboard you need to enable the `amazon.nova-pro-v1:0` model and any other models you want to use.
+
+Make sure you set your Bedrock credentials using SST Secrets. [See here](https://sst.dev/docs/environment-variables).
 
 ## Deploy Your Own
 
-You can deploy your own version of the Next.js AI Chatbot to Vercel with one click:
+We're deploying to AWS using [SST](https://sst.dev/), read more about how to set up your environment variables [here](https://sst.dev/docs/environment-variables).
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fai-chatbot&env=AUTH_SECRET,OPENAI_API_KEY&envDescription=Learn%20more%20about%20how%20to%20get%20the%20API%20Keys%20for%20the%20application&envLink=https%3A%2F%2Fgithub.com%2Fvercel%2Fai-chatbot%2Fblob%2Fmain%2F.env.example&demo-title=AI%20Chatbot&demo-description=An%20Open-Source%20AI%20Chatbot%20Template%20Built%20With%20Next.js%20and%20the%20AI%20SDK%20by%20Vercel.&demo-url=https%3A%2F%2Fchat.vercel.ai&stores=[{%22type%22:%22postgres%22},{%22type%22:%22blob%22}])
+```bash
+sst deploy --stage dev / production
+```
 
 ## Running locally
 
-You will need to use the environment variables [defined in `.env.example`](.env.example) to run Next.js AI Chatbot. It's recommended you use [Vercel Environment Variables](https://vercel.com/docs/projects/environment-variables) for this, but a `.env` file is all that is necessary.
-
-> Note: You should not commit your `.env` file or it will expose secrets that will allow others to control access to your various OpenAI and authentication provider accounts.
-
-1. Install Vercel CLI: `npm i -g vercel`
-2. Link local instance with Vercel and GitHub accounts (creates `.vercel` directory): `vercel link`
-3. Download your environment variables: `vercel env pull`
-
-```bash
-pnpm install
-pnpm dev
-```
+- Configure your AWS credentials and CLI. Follow the instructions [here](https://sst.dev/docs/aws-accounts).
+- Configure your AWS Bedrock credentials. Follow Model Provider instructions above.
+- Setup your environment variables (see sst.config.ts)
+- Run `pnpm install` to install the dependencies
+- Run `sst dev` to start the development server
 
 Your app template should now be running on [localhost:3000](http://localhost:3000/).
