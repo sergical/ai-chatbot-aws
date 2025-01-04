@@ -1,5 +1,5 @@
 <a href="https://aws-chat-app.serg.tech/">
-  <img alt="Next.js 14 and App Router-ready AI chatbot." src="app/images/og.png">
+  <img alt="Next.js 14 and App Router-ready AI chatbot." src="public/images/og.png">
   <h1 align="center">Next.js AI Chatbot on AWS</h1>
 </a>
 
