@@ -51,7 +51,7 @@ export default $config({
       ],
     });
 
-    new sst.x.DevCommand("Studio", {
+    new sst.x.DevCommand("AIChatbotAWSStudio", {
       link: [database],
       dev: {
         command: "npx drizzle-kit studio",

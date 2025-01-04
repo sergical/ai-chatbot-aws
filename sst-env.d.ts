@@ -6,22 +6,18 @@ import "sst"
 export {}
 declare module "sst" {
   export interface Resource {
-    "AIChatbotAWS": {
-      "type": "sst.aws.Nextjs"
-      "url": string
-    }
     "AIChatbotAWSBucket": {
       "name": string
       "type": "sst.aws.Bucket"
     }
-    "AIChatbotAWSDatabase": {
+    "AIChatbotAWSDB": {
       "clusterArn": string
       "database": string
       "host": string
       "password": string
       "port": number
       "secretArn": string
-      "type": "sst.aws.Aurora"
+      "type": "sst.aws.Postgres"
       "username": string
     }
     "AIChatbotAWSVPC": {
