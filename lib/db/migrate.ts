@@ -5,12 +5,12 @@ import postgres from "postgres";
 import { Resource } from "sst";
 
 const runMigrate = async () => {
-  if (!Resource.AIChatbotAWSDatabase.host) {
+  if (!Resource.AIChatbotAWSDB.host) {
     throw new Error("SST Resource for DB is not defined");
   }
 
   const connection = postgres(
-    `postgres://${Resource.AIChatbotAWSDatabase.username}:${Resource.AIChatbotAWSDatabase.password}@${Resource.AIChatbotAWSDatabase.host}:${Resource.AIChatbotAWSDatabase.port}/${Resource.AIChatbotAWSDatabase.database}`,
+    `postgres://${Resource.AIChatbotAWSDB.username}:${Resource.AIChatbotAWSDB.password}@${Resource.AIChatbotAWSDB.host}:${Resource.AIChatbotAWSDB.port}/${Resource.AIChatbotAWSDB.database}`,
     { max: 1 }
   );
 

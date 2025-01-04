@@ -21,11 +21,11 @@ import type { BlockKind } from "@/components/block";
 import { Resource } from "sst";
 
 const client = postgres({
-  database: Resource.AIChatbotAWSDatabase.database,
-  host: Resource.AIChatbotAWSDatabase.host,
-  port: Resource.AIChatbotAWSDatabase.port,
-  user: Resource.AIChatbotAWSDatabase.username,
-  password: Resource.AIChatbotAWSDatabase.password,
+  database: Resource.AIChatbotAWSDB.database,
+  host: Resource.AIChatbotAWSDB.host,
+  port: Resource.AIChatbotAWSDB.port,
+  user: Resource.AIChatbotAWSDB.username,
+  password: Resource.AIChatbotAWSDB.password,
 });
 const db = drizzle(client);
 

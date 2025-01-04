@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "tsx lib/db/migrate && next build",
+    "build": "next build",
     "db:check": "drizzle-kit check",
     "db:generate": "sst shell drizzle-kit generate",
     "db:migrate": "sst shell drizzle-kit migrate",
@@ -15,7 +15,7 @@
     "format": "biome format --write",
     "lint": "next lint && biome lint --write --unsafe",
     "lint:fix": "next lint --fix && biome lint --write --unsafe",
-    "sso:login": "aws sso login --profile SERGTECH",
+    "sso:login": "aws sso login --sso-session SERGTECH",
     "start": "next start",
     "deploy:dev": "sst deploy --stage dev",
     "deploy:prod": "sst deploy --stage production"

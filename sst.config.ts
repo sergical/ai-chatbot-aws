@@ -31,19 +31,13 @@ export default $config({
       bastion: true,
       nat: "ec2",
     });
-    const database = new sst.aws.Aurora("AIChatbotAWSDatabase", {
-      engine: "postgres",
-      // TODO: Fix this
-      // @ts-ignore
-      vpc,
-    });
+    const database = new sst.aws.Postgres.v1("AIChatbotAWSDB", { vpc });
 
     const bucket = new sst.aws.Bucket("AIChatbotAWSBucket", {
       access: "public",
     });
 
     new sst.aws.Nextjs("AIChatbotAWS", {
-      vpc,
       link: [
         database,
         bedrockAccessKeyId,

@@ -6,10 +6,10 @@ export default defineConfig({
   out: "./lib/db/migrations",
   dialect: "postgresql",
   dbCredentials: {
-    host: Resource.AIChatbotAWSDatabase.host,
-    port: Resource.AIChatbotAWSDatabase.port,
-    user: Resource.AIChatbotAWSDatabase.username,
-    password: Resource.AIChatbotAWSDatabase.password,
-    database: Resource.AIChatbotAWSDatabase.database,
+    host: Resource.AIChatbotAWSDB.host,
+    port: Resource.AIChatbotAWSDB.port,
+    user: Resource.AIChatbotAWSDB.username,
+    password: Resource.AIChatbotAWSDB.password,
+    database: Resource.AIChatbotAWSDB.database,
   },
 });
