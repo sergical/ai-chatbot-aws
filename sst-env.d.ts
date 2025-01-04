@@ -14,14 +14,14 @@ declare module "sst" {
       "name": string
       "type": "sst.aws.Bucket"
     }
-    "AIChatbotAWSDB": {
+    "AIChatbotAWSDatabase": {
       "clusterArn": string
       "database": string
       "host": string
       "password": string
       "port": number
       "secretArn": string
-      "type": "sst.aws.Postgres"
+      "type": "sst.aws.Aurora"
       "username": string
     }
     "AIChatbotAWSVPC": {

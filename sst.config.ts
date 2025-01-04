@@ -38,6 +38,10 @@ export default $config({
     });
 
     new sst.aws.Nextjs("AIChatbotAWS", {
+      domain: {
+        name: "aws-chat-app.serg.tech",
+        dns: sst.cloudflare.dns(),
+      },
       link: [
         database,
         bedrockAccessKeyId,

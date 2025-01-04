@@ -19,10 +19,6 @@ const FileSchema = z.object({
     }),
 });
 
-const s3Client = new S3Client({
-  region: "us-east-1",
-});
-
 export async function POST(request: Request) {
   const session = await auth();
 
@@ -56,24 +52,35 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "User not found" }, { status: 401 });
     }
 
-    // Get filename from formData since Blob doesn't have name property
-    const filename = (formData.get("file") as File).name;
-    const key = `uploads/${session.user.id}/${Date.now()}-${filename}`;
-
+    const key = crypto.randomUUID();
     const command = new PutObjectCommand({
       Bucket: Resource.AIChatbotAWSBucket.name,
       Key: key,
-      ContentType: file.type,
     });
 
     try {
-      const signedUrl = await getSignedUrl(s3Client, command, {
-        expiresIn: 3600,
+      const signedUrl = await getSignedUrl(new S3Client({}), command);
+
+      const response = await fetch(signedUrl, {
+        method: "PUT",
+        body: file,
+        headers: {
+          "Content-Type": file.type,
+        },
       });
 
+      if (!response.ok) {
+        return NextResponse.json({ error: "Upload failed" }, { status: 500 });
+      }
+
+      // Get the public URL for the uploaded file
+      const publicUrl = `https://${Resource.AIChatbotAWSBucket.name}.s3.amazonaws.com/${key}`;
+      console.log("publicUrl", publicUrl);
+
       return NextResponse.json({
-        url: signedUrl,
-        key,
+        url: publicUrl,
+        pathname: key,
+        contentType: file.type,
       });
     } catch (error) {
       console.error("Failed to generate signed URL:", error);
