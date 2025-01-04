@@ -10,6 +10,20 @@ export const metadata: Metadata = {
   title: "Next.js Chatbot Template",
   description:
     "Next.js chatbot template using the AI SDK. Hosted on AWS using SST.",
+  openGraph: {
+    title: "Next.js Chatbot Template",
+    description:
+      "Next.js chatbot template using the AI SDK. Hosted on AWS using SST.",
+    url: "https://aws-chat-app.serg.tech",
+    siteName: "Next.js Chatbot Template",
+    images: [
+      {
+        url: "https://aws-chat-app.serg.tech/images/og.png",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
 };
 
 export const viewport = {
