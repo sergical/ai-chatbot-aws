@@ -6,6 +6,10 @@ import "sst"
 export {}
 declare module "sst" {
   export interface Resource {
+    "AIChatbotAWS": {
+      "type": "sst.aws.Nextjs"
+      "url": string
+    }
     "AIChatbotAWSBucket": {
       "name": string
       "type": "sst.aws.Bucket"
