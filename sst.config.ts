@@ -42,6 +42,7 @@ export default $config({
         name: "aws-chat-app.serg.tech",
         dns: sst.cloudflare.dns(),
       },
+      vpc,
       link: [
         database,
         bedrockAccessKeyId,
