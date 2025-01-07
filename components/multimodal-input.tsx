@@ -170,7 +170,7 @@ function PureMultimodalInput({
       try {
         const uploadPromises = files.map((file) => uploadFile(file));
         const uploadedAttachments = await Promise.all(uploadPromises);
-        console.log("uploadedAttachments", uploadedAttachments);
+
         const successfullyUploadedAttachments = uploadedAttachments.filter(
           (attachment) => attachment !== undefined
         );
@@ -187,8 +187,6 @@ function PureMultimodalInput({
     },
     [setAttachments]
   );
-
-  console.log("attachments", attachments);
 
   return (
     <div className="relative w-full flex flex-col gap-4">

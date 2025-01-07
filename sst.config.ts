@@ -38,6 +38,9 @@ export default $config({
     });
 
     new sst.aws.Nextjs("AIChatbotAWS", {
+      environment: {
+        NEXTAUTH_URL: "https://aws-chat-app.serg.tech",
+      },
       domain: {
         name: "aws-chat-app.serg.tech",
         dns: sst.cloudflare.dns(),

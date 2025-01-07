@@ -75,7 +75,6 @@ export async function POST(request: Request) {
 
       // Get the public URL for the uploaded file
       const publicUrl = `https://${Resource.AIChatbotAWSBucket.name}.s3.amazonaws.com/${key}`;
-      console.log("publicUrl", publicUrl);
 
       return NextResponse.json({
         url: publicUrl,
