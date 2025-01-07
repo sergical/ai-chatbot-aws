@@ -31,7 +31,7 @@ export default $config({
       bastion: true,
       nat: "ec2",
     });
-    const database = new sst.aws.Postgres.v1("AIChatbotAWSDB", { vpc });
+    const database = new sst.aws.Postgres("AIChatbotAWSDB", { vpc });
 
     const bucket = new sst.aws.Bucket("AIChatbotAWSBucket", {
       access: "public",
